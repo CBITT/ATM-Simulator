@@ -149,8 +149,6 @@ public class ATMMainMenu extends javax.swing.JFrame {
         mainPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         mainPane.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        paneWithdraw.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
         btnWithdrawTwenty.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnWithdrawTwenty.setForeground(new java.awt.Color(0, 153, 51));
         btnWithdrawTwenty.setText("$20");
@@ -309,7 +307,7 @@ public class ATMMainMenu extends javax.swing.JFrame {
                 .addGroup(paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtWithdrawAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnWithdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(lblRemainingWithdrawLimit))
@@ -321,8 +319,6 @@ public class ATMMainMenu extends javax.swing.JFrame {
         paneWithdrawLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnWithdraw, txtWithdrawAmount});
 
         mainPane.addTab("Withdraw", paneWithdraw);
-
-        paneDeposit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnDepositFive.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnDepositFive.setForeground(new java.awt.Color(0, 153, 51));
@@ -482,7 +478,7 @@ public class ATMMainMenu extends javax.swing.JFrame {
                 .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDepositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(lblRemainingDepositLimit))
@@ -494,8 +490,6 @@ public class ATMMainMenu extends javax.swing.JFrame {
         paneDepositLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDeposit, txtDepositAmount});
 
         mainPane.addTab("Deposit", paneDeposit);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButton1.setText("PRINT RECEIPT");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -510,7 +504,7 @@ public class ATMMainMenu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -518,7 +512,7 @@ public class ATMMainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         mainPane.addTab("Other Services", jPanel1);
