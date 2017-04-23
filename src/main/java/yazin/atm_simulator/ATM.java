@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ATM {
 
-    private final int DEPOSIT_LIMIT = 5000;
+    private final int DEPOSIT_LIMIT = 2000;
     private final int WITHDRAW_LIMIT = 750;
     private int currentBalance;
 //    private int remainingDepositLimit;
@@ -79,6 +79,13 @@ public class ATM {
     }
 
     public void deposit(int amount, JLabel currentBalanceLabel, JLabel remainingLimitLabel, JTable table, JProgressBar limitBar) {
+        
+        if (amount < 1){
+            JOptionPane.showMessageDialog(null, "The amount you are trying to deposit is too small. Please try again.",
+                        "Invalid Amount", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         switch (checkAmountWithinLimit(limitBar, amount)) {
             case 0:
                 if (amount <= 0) {
@@ -107,10 +114,15 @@ public class ATM {
 
     public void withdraw(int amount, JLabel currentBalanceLabel, JLabel remainingLimitLabel, JTable table, JProgressBar limitBar) {
 
+        if (amount < 1){
+            JOptionPane.showMessageDialog(null, "The amount you are trying to withdraw is too small. Please try again.",
+                        "Invalid Amount", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         switch (checkAmountWithinLimit(limitBar, amount)) {
             case 0:
                 if (amount > getCurrentBalance()) {
-                    JOptionPane.showMessageDialog(null, "The amount you're trying to withdraw is greater than your current balance.",
+                    JOptionPane.showMessageDialog(null, "The amount you are trying to withdraw is greater than your current balance.",
                             "Invalid Amount", JOptionPane.ERROR_MESSAGE);
                 } else {
                     setCurrentBalance(getCurrentBalance() - amount);

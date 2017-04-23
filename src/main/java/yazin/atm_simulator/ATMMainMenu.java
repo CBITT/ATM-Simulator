@@ -5,10 +5,12 @@
  */
 package yazin.atm_simulator;
 
+import java.awt.HeadlessException;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.*;
+import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
 
 /**
@@ -59,31 +61,25 @@ public class ATMMainMenu extends javax.swing.JFrame {
         btnWithdrawTwenty = new javax.swing.JButton();
         btnWithdrawForty = new javax.swing.JButton();
         btnWithdrawSixty = new javax.swing.JButton();
-        btnWithdrawEighty = new javax.swing.JButton();
         btnWithdrawTen = new javax.swing.JButton();
         btnWithdrawFive = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtWithdrawAmount = new javax.swing.JTextField();
         btnWithdraw = new javax.swing.JButton();
-        btnWithdrawHundred = new javax.swing.JButton();
         withdrawLimitBar = new javax.swing.JProgressBar();
         jLabel8 = new javax.swing.JLabel();
         lblRemainingWithdrawLimit = new javax.swing.JLabel();
+        btnWithdrawFifty = new javax.swing.JButton();
         paneDeposit = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         btnDepositFive = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         btnDepositTen = new javax.swing.JButton();
         btnDepositTwenty = new javax.swing.JButton();
         btnDepositForty = new javax.swing.JButton();
+        btnDepositFifty = new javax.swing.JButton();
         btnDepositSixty = new javax.swing.JButton();
-        btnDepositEighty = new javax.swing.JButton();
-        btnDepositHundred = new javax.swing.JButton();
-        txtDepositAmount = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         btnDeposit = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
         lblRemainingDepositLimit = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         depositLimitBar = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -176,15 +172,6 @@ public class ATMMainMenu extends javax.swing.JFrame {
             }
         });
 
-        btnWithdrawEighty.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnWithdrawEighty.setForeground(new java.awt.Color(0, 153, 51));
-        btnWithdrawEighty.setText("$80");
-        btnWithdrawEighty.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnWithdrawEightyActionPerformed(evt);
-            }
-        });
-
         btnWithdrawTen.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnWithdrawTen.setForeground(new java.awt.Color(0, 153, 51));
         btnWithdrawTen.setText("$10");
@@ -206,31 +193,13 @@ public class ATMMainMenu extends javax.swing.JFrame {
         jLabel3.setText("Please choose how much you'd like to withdraw:");
         jLabel3.setToolTipText("");
 
-        jLabel4.setText("Or enter a different amount using the keypad: ");
-        jLabel4.setToolTipText("");
-
-        txtWithdrawAmount.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txtWithdrawAmount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtWithdrawAmount.setText("Under Construction");
-        txtWithdrawAmount.setEnabled(false);
-        txtWithdrawAmount.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtWithdrawAmountKeyTyped(evt);
-            }
-        });
-
         btnWithdraw.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnWithdraw.setForeground(new java.awt.Color(0, 153, 51));
-        btnWithdraw.setText("Withdraw");
+        btnWithdraw.setText("Other");
         btnWithdraw.setToolTipText("");
-        btnWithdraw.setEnabled(false);
-
-        btnWithdrawHundred.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnWithdrawHundred.setForeground(new java.awt.Color(0, 153, 51));
-        btnWithdrawHundred.setText("$100");
-        btnWithdrawHundred.addActionListener(new java.awt.event.ActionListener() {
+        btnWithdraw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnWithdrawHundredActionPerformed(evt);
+                btnWithdrawActionPerformed(evt);
             }
         });
 
@@ -243,6 +212,15 @@ public class ATMMainMenu extends javax.swing.JFrame {
         lblRemainingWithdrawLimit.setText("(Remaining $750)");
         lblRemainingWithdrawLimit.setToolTipText("");
 
+        btnWithdrawFifty.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnWithdrawFifty.setForeground(new java.awt.Color(0, 153, 51));
+        btnWithdrawFifty.setText("$50");
+        btnWithdrawFifty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWithdrawFiftyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout paneWithdrawLayout = new javax.swing.GroupLayout(paneWithdraw);
         paneWithdraw.setLayout(paneWithdrawLayout);
         paneWithdrawLayout.setHorizontalGroup(
@@ -251,39 +229,29 @@ public class ATMMainMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(withdrawLimitBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
                     .addGroup(paneWithdrawLayout.createSequentialGroup()
-                        .addGroup(paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(paneWithdrawLayout.createSequentialGroup()
-                                .addGroup(paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(paneWithdrawLayout.createSequentialGroup()
-                                        .addComponent(txtWithdrawAmount)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnWithdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(paneWithdrawLayout.createSequentialGroup()
-                                        .addComponent(btnWithdrawFive, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnWithdrawTen)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnWithdrawTwenty)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnWithdrawForty)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnWithdrawSixty)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnWithdrawEighty)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnWithdrawHundred))
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addGroup(paneWithdrawLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblRemainingWithdrawLimit)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblRemainingWithdrawLimit))
+                    .addGroup(paneWithdrawLayout.createSequentialGroup()
+                        .addComponent(btnWithdrawFive, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnWithdrawTen, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnWithdrawTwenty, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnWithdrawForty, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnWithdrawFifty, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnWithdrawSixty, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnWithdraw, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        paneWithdrawLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnWithdrawEighty, btnWithdrawFive, btnWithdrawForty, btnWithdrawHundred, btnWithdrawSixty, btnWithdrawTen, btnWithdrawTwenty});
+        paneWithdrawLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnWithdrawFifty, btnWithdrawFive, btnWithdrawForty, btnWithdrawSixty, btnWithdrawTen, btnWithdrawTwenty});
 
         paneWithdrawLayout.setVerticalGroup(
             paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,33 +260,30 @@ public class ATMMainMenu extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnWithdrawForty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnWithdrawSixty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnWithdrawEighty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnWithdrawHundred, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnWithdrawTwenty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnWithdrawTen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnWithdrawFive, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtWithdrawAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnWithdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addComponent(btnWithdrawFive, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnWithdrawFifty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnWithdrawSixty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnWithdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnWithdrawForty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(paneWithdrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(lblRemainingWithdrawLimit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(withdrawLimitBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(withdrawLimitBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        paneWithdrawLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnWithdraw, txtWithdrawAmount});
+        paneWithdrawLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnWithdrawFifty, btnWithdrawFive, btnWithdrawForty, btnWithdrawSixty, btnWithdrawTen, btnWithdrawTwenty});
 
         mainPane.addTab("Withdraw", paneWithdraw);
+
+        jLabel4.setText("Please choose how much you'd like to deposit:");
+        jLabel4.setToolTipText("");
 
         btnDepositFive.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnDepositFive.setForeground(new java.awt.Color(0, 153, 51));
@@ -328,9 +293,6 @@ public class ATMMainMenu extends javax.swing.JFrame {
                 btnDepositFiveActionPerformed(evt);
             }
         });
-
-        jLabel5.setText("Please choose how much you'd like to deposit:");
-        jLabel5.setToolTipText("");
 
         btnDepositTen.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnDepositTen.setForeground(new java.awt.Color(0, 153, 51));
@@ -359,6 +321,15 @@ public class ATMMainMenu extends javax.swing.JFrame {
             }
         });
 
+        btnDepositFifty.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnDepositFifty.setForeground(new java.awt.Color(0, 153, 51));
+        btnDepositFifty.setText("$50");
+        btnDepositFifty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositFiftyActionPerformed(evt);
+            }
+        });
+
         btnDepositSixty.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnDepositSixty.setForeground(new java.awt.Color(0, 153, 51));
         btnDepositSixty.setText("$60");
@@ -368,51 +339,24 @@ public class ATMMainMenu extends javax.swing.JFrame {
             }
         });
 
-        btnDepositEighty.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnDepositEighty.setForeground(new java.awt.Color(0, 153, 51));
-        btnDepositEighty.setText("$80");
-        btnDepositEighty.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositEightyActionPerformed(evt);
-            }
-        });
-
-        btnDepositHundred.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnDepositHundred.setForeground(new java.awt.Color(0, 153, 51));
-        btnDepositHundred.setText("$100");
-        btnDepositHundred.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositHundredActionPerformed(evt);
-            }
-        });
-
-        txtDepositAmount.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txtDepositAmount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDepositAmount.setText("Under Construction");
-        txtDepositAmount.setEnabled(false);
-        txtDepositAmount.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDepositAmountKeyTyped(evt);
-            }
-        });
-
-        jLabel6.setText("Or enter a different amount using the keypad: ");
-        jLabel6.setToolTipText("");
-
         btnDeposit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnDeposit.setForeground(new java.awt.Color(0, 153, 51));
-        btnDeposit.setText("Deposit");
+        btnDeposit.setText("Other");
         btnDeposit.setToolTipText("");
-        btnDeposit.setEnabled(false);
-
-        jLabel10.setText("Daily ATM Deposit Limit: $5000");
-        jLabel10.setToolTipText("");
+        btnDeposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositActionPerformed(evt);
+            }
+        });
 
         lblRemainingDepositLimit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblRemainingDepositLimit.setText("(Remaining $5000)");
+        lblRemainingDepositLimit.setText("(Remaining $2000)");
         lblRemainingDepositLimit.setToolTipText("");
 
-        depositLimitBar.setMaximum(5000);
+        jLabel9.setText("Daily ATM Withdrawal Limit: $2000");
+        jLabel9.setToolTipText("");
+
+        depositLimitBar.setMaximum(2000);
 
         javax.swing.GroupLayout paneDepositLayout = new javax.swing.GroupLayout(paneDeposit);
         paneDeposit.setLayout(paneDepositLayout);
@@ -422,72 +366,51 @@ public class ATMMainMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(depositLimitBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
                     .addGroup(paneDepositLayout.createSequentialGroup()
-                        .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addGroup(paneDepositLayout.createSequentialGroup()
-                                .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(paneDepositLayout.createSequentialGroup()
-                                        .addComponent(txtDepositAmount)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(paneDepositLayout.createSequentialGroup()
-                                        .addComponent(btnDepositFive, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnDepositTen)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnDepositTwenty)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnDepositForty)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDepositSixty)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDepositEighty)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDepositHundred))
-                            .addGroup(paneDepositLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblRemainingDepositLimit)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblRemainingDepositLimit))
+                    .addGroup(paneDepositLayout.createSequentialGroup()
+                        .addComponent(btnDepositFive, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDepositTen, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDepositTwenty, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDepositForty, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDepositFifty, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDepositSixty, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDeposit, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-
-        paneDepositLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDepositEighty, btnDepositFive, btnDepositForty, btnDepositHundred, btnDepositSixty, btnDepositTen, btnDepositTwenty});
-
         paneDepositLayout.setVerticalGroup(
             paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneDepositLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDepositForty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnDepositSixty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnDepositEighty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnDepositHundred, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnDepositTwenty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnDepositTen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnDepositFive, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDepositFive, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnDepositSixty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDepositFifty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDepositForty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDepositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                    .addComponent(jLabel9)
                     .addComponent(lblRemainingDepositLimit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(depositLimitBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(depositLimitBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        paneDepositLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDeposit, txtDepositAmount});
 
         mainPane.addTab("Deposit", paneDeposit);
 
@@ -504,7 +427,7 @@ public class ATMMainMenu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -512,7 +435,7 @@ public class ATMMainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         mainPane.addTab("Other Services", jPanel1);
@@ -570,13 +493,16 @@ public class ATMMainMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(infoPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(mainPane)
-                    .addComponent(scrollPane))
+                    .addComponent(mainPane, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -587,62 +513,21 @@ public class ATMMainMenu extends javax.swing.JFrame {
                     .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(infoPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainPane, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                .addComponent(mainPane, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnWithdrawFiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawFiveActionPerformed
-        atm.withdraw(5, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
-    }//GEN-LAST:event_btnWithdrawFiveActionPerformed
-
-    private void btnWithdrawTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawTenActionPerformed
-        atm.withdraw(10, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
-    }//GEN-LAST:event_btnWithdrawTenActionPerformed
-
-    private void btnWithdrawTwentyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawTwentyActionPerformed
-        atm.withdraw(20, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
-    }//GEN-LAST:event_btnWithdrawTwentyActionPerformed
-
-    private void btnWithdrawFortyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawFortyActionPerformed
-        atm.withdraw(40, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
-    }//GEN-LAST:event_btnWithdrawFortyActionPerformed
-
-    private void btnWithdrawSixtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawSixtyActionPerformed
-        atm.withdraw(60, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
-    }//GEN-LAST:event_btnWithdrawSixtyActionPerformed
-
-    private void btnWithdrawEightyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawEightyActionPerformed
-        atm.withdraw(80, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
-    }//GEN-LAST:event_btnWithdrawEightyActionPerformed
-
-    private void txtWithdrawAmountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWithdrawAmountKeyTyped
-        if (txtWithdrawAmount.getText().length() > 4) {
-            try {
-                txtWithdrawAmount.setText(txtWithdrawAmount.getText(0, 4));
-            } catch (BadLocationException ex) {
-                Logger.getLogger(ATMMainMenu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        Pattern pattern = Pattern.compile("[^\\d]+");
-        Matcher match = pattern.matcher(txtWithdrawAmount.getText());
-        while (match.find()) {
-            txtWithdrawAmount.setText(txtWithdrawAmount.getText().replace(match.group(0), ""));
-        }
-    }//GEN-LAST:event_txtWithdrawAmountKeyTyped
-
-    private void btnWithdrawHundredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawHundredActionPerformed
-        atm.withdraw(100, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
-
-    }//GEN-LAST:event_btnWithdrawHundredActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        atm.printLog(logTable);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnDepositFiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositFiveActionPerformed
         atm.deposit(5, lblBalance, lblRemainingDepositLimit, logTable, depositLimitBar);
-
     }//GEN-LAST:event_btnDepositFiveActionPerformed
 
     private void btnDepositTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositTenActionPerformed
@@ -657,25 +542,67 @@ public class ATMMainMenu extends javax.swing.JFrame {
         atm.deposit(40, lblBalance, lblRemainingDepositLimit, logTable, depositLimitBar);
     }//GEN-LAST:event_btnDepositFortyActionPerformed
 
+    private void btnDepositFiftyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositFiftyActionPerformed
+        atm.deposit(50, lblBalance, lblRemainingDepositLimit, logTable, depositLimitBar);
+    }//GEN-LAST:event_btnDepositFiftyActionPerformed
+
     private void btnDepositSixtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositSixtyActionPerformed
         atm.deposit(60, lblBalance, lblRemainingDepositLimit, logTable, depositLimitBar);
     }//GEN-LAST:event_btnDepositSixtyActionPerformed
 
-    private void btnDepositEightyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositEightyActionPerformed
-        atm.deposit(80, lblBalance, lblRemainingDepositLimit, logTable, depositLimitBar);
-    }//GEN-LAST:event_btnDepositEightyActionPerformed
+    private void btnDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositActionPerformed
+        try {
+            String input = (String) JOptionPane.showInputDialog(this,
+                "Enter the value you would like to deposit:", "Deposit",
+                JOptionPane.INFORMATION_MESSAGE, null, null, "1");
 
-    private void btnDepositHundredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositHundredActionPerformed
-        atm.deposit(100, lblBalance, lblRemainingDepositLimit, logTable, depositLimitBar);
-    }//GEN-LAST:event_btnDepositHundredActionPerformed
+            if (input != null) {
+                atm.deposit(Integer.parseInt(input.trim()), lblBalance, lblRemainingDepositLimit, logTable, depositLimitBar);
+            }
+        } catch (HeadlessException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "The value you have enterned is invalid. Please try again.",
+                "Invalid Value", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDepositActionPerformed
 
-    private void txtDepositAmountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDepositAmountKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDepositAmountKeyTyped
+    private void btnWithdrawFiftyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawFiftyActionPerformed
+        atm.withdraw(50, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
+    }//GEN-LAST:event_btnWithdrawFiftyActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        atm.printLog(logTable);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawActionPerformed
+        try {
+            String input = (String) JOptionPane.showInputDialog(this,
+                "Enter the value you would like to withdraw:", "Withdraw",
+                JOptionPane.INFORMATION_MESSAGE, null, null, "1");
+
+            if (input != null) {
+                atm.deposit(Integer.parseInt(input.trim()), lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
+            }
+        } catch (HeadlessException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "The value you have enterned is invalid. Please try again.",
+                "Invalid Value", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnWithdrawActionPerformed
+
+    private void btnWithdrawFiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawFiveActionPerformed
+        atm.withdraw(5, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
+    }//GEN-LAST:event_btnWithdrawFiveActionPerformed
+
+    private void btnWithdrawTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawTenActionPerformed
+        atm.withdraw(10, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
+    }//GEN-LAST:event_btnWithdrawTenActionPerformed
+
+    private void btnWithdrawSixtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawSixtyActionPerformed
+        atm.withdraw(60, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
+    }//GEN-LAST:event_btnWithdrawSixtyActionPerformed
+
+    private void btnWithdrawFortyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawFortyActionPerformed
+        atm.withdraw(40, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
+    }//GEN-LAST:event_btnWithdrawFortyActionPerformed
+
+    private void btnWithdrawTwentyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawTwentyActionPerformed
+        atm.withdraw(20, lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
+    }//GEN-LAST:event_btnWithdrawTwentyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -714,18 +641,16 @@ public class ATMMainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeposit;
-    private javax.swing.JButton btnDepositEighty;
+    private javax.swing.JButton btnDepositFifty;
     private javax.swing.JButton btnDepositFive;
     private javax.swing.JButton btnDepositForty;
-    private javax.swing.JButton btnDepositHundred;
     private javax.swing.JButton btnDepositSixty;
     private javax.swing.JButton btnDepositTen;
     private javax.swing.JButton btnDepositTwenty;
     private javax.swing.JButton btnWithdraw;
-    private javax.swing.JButton btnWithdrawEighty;
+    private javax.swing.JButton btnWithdrawFifty;
     private javax.swing.JButton btnWithdrawFive;
     private javax.swing.JButton btnWithdrawForty;
-    private javax.swing.JButton btnWithdrawHundred;
     private javax.swing.JButton btnWithdrawSixty;
     private javax.swing.JButton btnWithdrawTen;
     private javax.swing.JButton btnWithdrawTwenty;
@@ -734,13 +659,11 @@ public class ATMMainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel infoPanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAccountNum;
     private javax.swing.JLabel lblBalance;
@@ -752,8 +675,6 @@ public class ATMMainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel paneDeposit;
     private javax.swing.JPanel paneWithdraw;
     private javax.swing.JScrollPane scrollPane;
-    private javax.swing.JTextField txtDepositAmount;
-    private javax.swing.JTextField txtWithdrawAmount;
     private javax.swing.JProgressBar withdrawLimitBar;
     // End of variables declaration//GEN-END:variables
 }
