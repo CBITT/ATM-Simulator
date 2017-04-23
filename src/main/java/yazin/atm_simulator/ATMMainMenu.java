@@ -464,8 +464,6 @@ public class ATMMainMenu extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        logTable.getTableHeader().setResizingAllowed(false);
-        logTable.getTableHeader().setReorderingAllowed(false);
         scrollPane.setViewportView(logTable);
 
         infoPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Current Balance"));
@@ -576,7 +574,7 @@ public class ATMMainMenu extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE, null, null, "1");
 
             if (input != null) {
-                atm.deposit(Integer.parseInt(input.trim()), lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
+                atm.withdraw(Integer.parseInt(input.trim()), lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
             }
         } catch (HeadlessException | NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "The value you have enterned is invalid. Please try again.",
