@@ -14,7 +14,7 @@ import java.sql.Statement;
  *
  * @author yazin
  */
-public class Derby {
+public class DerbyModel {
     
     private static Connection dbConnection;
     //private Statement dbStatement;

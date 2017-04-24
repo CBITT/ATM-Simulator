@@ -17,7 +17,7 @@ import javax.swing.text.BadLocationException;
  *
  * @author yazin
  */
-public class ATMMainMenu extends javax.swing.JFrame {
+public class ATMView extends javax.swing.JFrame {
 
     /**
      * This method generates a random account number
@@ -35,7 +35,7 @@ public class ATMMainMenu extends javax.swing.JFrame {
         return accountNum;
     }
 
-    public ATMMainMenu() {
+    public ATMView() {
         initComponents();
         lblAccountNum.setText(generateRandomAccountNumber());
         lblBalance.setText("$" + Integer.toString(atm.getCurrentBalance()));
@@ -398,10 +398,11 @@ public class ATMMainMenu extends javax.swing.JFrame {
                     .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnDepositTen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnDepositFive, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnDepositSixty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnDepositFifty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnDepositFifty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDepositSixty, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnDepositForty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(paneDepositLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -551,15 +552,15 @@ public class ATMMainMenu extends javax.swing.JFrame {
     private void btnDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositActionPerformed
         try {
             String input = (String) JOptionPane.showInputDialog(this,
-                "Enter the value you would like to deposit:", "Deposit",
-                JOptionPane.INFORMATION_MESSAGE, null, null, "1");
+                    "Enter the value you would like to deposit:", "Deposit",
+                    JOptionPane.INFORMATION_MESSAGE, null, null, "1");
 
             if (input != null) {
                 atm.deposit(Integer.parseInt(input.trim()), lblBalance, lblRemainingDepositLimit, logTable, depositLimitBar);
             }
         } catch (HeadlessException | NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "The value you have enterned is invalid. Please try again.",
-                "Invalid Value", JOptionPane.ERROR_MESSAGE);
+                    "Invalid Value", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnDepositActionPerformed
 
@@ -570,15 +571,15 @@ public class ATMMainMenu extends javax.swing.JFrame {
     private void btnWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawActionPerformed
         try {
             String input = (String) JOptionPane.showInputDialog(this,
-                "Enter the value you would like to withdraw:", "Withdraw",
-                JOptionPane.INFORMATION_MESSAGE, null, null, "1");
+                    "Enter the value you would like to withdraw:", "Withdraw",
+                    JOptionPane.INFORMATION_MESSAGE, null, null, "1");
 
             if (input != null) {
                 atm.withdraw(Integer.parseInt(input.trim()), lblBalance, lblRemainingWithdrawLimit, logTable, withdrawLimitBar);
             }
         } catch (HeadlessException | NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "The value you have enterned is invalid. Please try again.",
-                "Invalid Value", JOptionPane.ERROR_MESSAGE);
+                    "Invalid Value", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnWithdrawActionPerformed
 
@@ -619,20 +620,21 @@ public class ATMMainMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ATMMainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ATMView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ATMMainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ATMView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ATMMainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ATMView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ATMMainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ATMView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ATMMainMenu().setVisible(true);
+                new ATMView().setVisible(true);
             }
         });
     }

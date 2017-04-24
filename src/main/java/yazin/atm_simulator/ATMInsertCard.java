@@ -382,7 +382,7 @@ public class ATMInsertCard extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (txtPin.getText().length() == 4) {
 
-            ATMMainMenu atmMainMenu = new ATMMainMenu();
+            ATMView atmMainMenu = new ATMView();
             atmMainMenu.setLocationRelativeTo(null);
             atmMainMenu.setVisible(true);
             //this.setLocation(this.getLocation().x - atmMainMenu.getLocation().x, this.getLocation().y - atmMainMenu.getLocation().y);
