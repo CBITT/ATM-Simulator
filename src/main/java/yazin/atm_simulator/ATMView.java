@@ -94,6 +94,7 @@ public class ATMView extends javax.swing.JFrame {
 
         infoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Account Information"));
         infoPanel.setEnabled(false);
+        infoPanel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Account #:");
@@ -469,6 +470,7 @@ public class ATMView extends javax.swing.JFrame {
 
         infoPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Current Balance"));
         infoPanel1.setEnabled(false);
+        infoPanel1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 
         lblBalance.setFont(new java.awt.Font("Arial", 1, 32)); // NOI18N
         lblBalance.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
