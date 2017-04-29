@@ -15,13 +15,13 @@ public class ATMSimulator {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        SignUpForAccountView signUp = new SignUpForAccountView();
-//        signUp.setLocationRelativeTo(null);
-//        signUp.setVisible(true);
+        SignUpForAccountView signUp = new SignUpForAccountView();
+        signUp.setLocationRelativeTo(null);
+        signUp.setVisible(true);
         
-        ATMInsertCard atmInsertCard = new ATMInsertCard();
-        atmInsertCard.setLocationRelativeTo(null);
-        atmInsertCard.setVisible(true);
+//        ATMInsertCard atmInsertCard = new ATMInsertCard();
+//        atmInsertCard.setLocationRelativeTo(null);
+//        atmInsertCard.setVisible(true);
     }
     
 }
