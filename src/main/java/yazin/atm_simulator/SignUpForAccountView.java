@@ -5,6 +5,8 @@
  */
 package yazin.atm_simulator;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author yazin
@@ -28,7 +30,7 @@ public class SignUpForAccountView extends javax.swing.JFrame {
     private void initComponents() {
 
         panelAccountInformation = new javax.swing.JPanel();
-        txtName = new javax.swing.JTextField();
+        txtFullName = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
@@ -53,11 +55,21 @@ public class SignUpForAccountView extends javax.swing.JFrame {
 
         panelAccountInformation.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Account Information", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
+        txtFullName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
         lblName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblName.setText("Full name:");
 
         lblAddress.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblAddress.setText("Address:");
+
+        txtAddress.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        txtSSN3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        txtSSN2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        txtSSN1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
         lblSSN.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblSSN.setText("Social Security Number:");
@@ -74,7 +86,7 @@ public class SignUpForAccountView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelAccountInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelAccountInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtFullName, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(txtAddress)
                         .addComponent(lblName)
                         .addComponent(lblAddress)
@@ -94,7 +106,7 @@ public class SignUpForAccountView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -133,6 +145,8 @@ public class SignUpForAccountView extends javax.swing.JFrame {
 
         lblPIN.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblPIN.setText("Personal Identification Number (PIN):");
+
+        txtPIN.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
         javax.swing.GroupLayout panelDepositAndPinLayout = new javax.swing.GroupLayout(panelDepositAndPin);
         panelDepositAndPin.setLayout(panelDepositAndPinLayout);
@@ -173,6 +187,11 @@ public class SignUpForAccountView extends javax.swing.JFrame {
 
         btnSubmit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSubmit.setText("Submit Information");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         btnClearFields.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnClearFields.setText("Clear Fields");
@@ -233,11 +252,11 @@ public class SignUpForAccountView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sliderAmountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderAmountStateChanged
-        lblAmount.setText("$"+sliderAmount.getValue());
+        lblAmount.setText("$" + sliderAmount.getValue());
     }//GEN-LAST:event_sliderAmountStateChanged
 
     private void btnClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearFieldsActionPerformed
-        txtName.setText("");
+        txtFullName.setText("");
         txtAddress.setText("");
         txtSSN1.setText("");
         txtSSN2.setText("");
@@ -245,6 +264,44 @@ public class SignUpForAccountView extends javax.swing.JFrame {
         txtPIN.setText("");
         sliderAmount.setValue(1);
     }//GEN-LAST:event_btnClearFieldsActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+
+        boolean oneOrMoreFieldsAreEmpty = false;
+
+        if (txtFullName.getText().isEmpty()
+                || txtAddress.getText().isEmpty()
+                || txtSSN1.getText().isEmpty()
+                || txtSSN2.getText().isEmpty()
+                || txtSSN3.getText().isEmpty()
+                || txtPIN.getText().isEmpty()) {
+            oneOrMoreFieldsAreEmpty = true;
+        }
+
+        if (oneOrMoreFieldsAreEmpty) {
+            JOptionPane.showMessageDialog(null, "One or more fields are empty. Please fill them and try again.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            try {
+                
+                Integer.parseInt(txtPIN.getText());
+                
+                if (txtPIN.getText().length() != 4) {
+                    JOptionPane.showMessageDialog(null, "Your PIN is not 4 digits in length. Please try again.",
+                            "Invalid PIN", JOptionPane.ERROR_MESSAGE);
+                }
+                
+                else{
+                    //call submit information
+                }
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Your PIN must contain 4 digits using numbers between 0 and 9. Please try again.",
+                        "Invalid PIN", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,7 +353,7 @@ public class SignUpForAccountView extends javax.swing.JFrame {
     private javax.swing.JPanel panelDepositAndPin;
     private javax.swing.JSlider sliderAmount;
     private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtFullName;
     private javax.swing.JTextField txtPIN;
     private javax.swing.JTextField txtSSN1;
     private javax.swing.JTextField txtSSN2;
